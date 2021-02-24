@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-2">
+    <div class="mb-3">
+      <a [href]="pageUrl" target="_blank" rel="noopener noreferrer">
+        <site-logo [site]="'pixiv'" [logoClass]="'logo_size'"></site-logo>
+      </a>
+    </div>
+    <div class="text-center mb-3">
+      <a [routerLink]="['/account', site, author.id]">
+      <img [src]="'http://penguin.linux.test:8880/download?url=' + author.imageURL" class="w-50"><p class="h5">{{author.name}}</p>
+      </a>
+    </div>
+    <div class="mb-3">
+      <div><p class="fs-6 mb-0">Size</p></div>
+      <div class="ms-3">{{mainImageSize}}</div>
+    </div>
+    <div class="mb-3">
+      <div><p class="fs-6 mb-0">Tags</p></div>
+      <div *ngFor="let tag of tags" class="badge rounded-pill bg-primary">{{tag.name}}</div>
+    </div>
+    <div class="mb-3">
+      <div><p class="fs-6 mb-0">Created</p></div>
+      <div class="ms-3">{{created | date: 'yyyy/MM/dd HH:mm:ss'}}</div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="main-content-height">
+      <img #image [src]="downloadUrls[picPos]" class="picture-height">
+      <div class="mb-4">
+        <div *ngIf="downloadUrls.length > 1" class="row row-cols-6">
+          <div *ngFor="let pic of downloadUrls; index as i">
+            <img #thumb [src]="pic" class="img-thumbnail" (click)="imageClick(i)">
+            <div>{{thumb | imgElementSize | async}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="w-100 text-start">
+        <h1>{{title}}</h1>
+        <p><text-link [text]="description"></text-link></p>
+      </div>
+    </div>
+  </div>
+<div>

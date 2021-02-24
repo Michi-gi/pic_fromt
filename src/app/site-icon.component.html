@@ -1,0 +1,2 @@
+<img *ngIf="iconUrl != null" [src]="'assets/' + iconUrl" [ngClass]="iconClass">
+<span *ngIf="iconUrl == null" class="badge bg-info">{{site}}</span>

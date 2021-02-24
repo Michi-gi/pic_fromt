@@ -1,0 +1,24 @@
+<div class="card" style="width: 18rem;">
+  <div class="card-header">
+    <a [href]="pageUrl" target="_blank" rel="noopener noreferrer">
+      <site-logo [site]="site" [logoClass]="'logo_size_small'"></site-logo>
+    </a>
+    <button type="button" class="btn-close" aria-label="Close" (click)="closeClicked()"></button>
+  </div>
+  <a [routerLink]="['/account', site, id]">
+    <img [src]="imageUrl" class="card-img-top">
+  </a>
+  <div class="card-body">
+    <h5 class="card-title">
+      <a [routerLink]="['/account', site, id]">{{name}}</a>
+    </h5>
+    <p class="card-text"><text-link [text]="description"></text-link></p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Account: {{account}}</li>
+    <li class="list-group-item">ID: {{id}}</li>
+  </ul>
+  <div class="card-body">
+    <a *ngFor="let s of externalSites; first as f" [href]="s.URL" class="card-link" [ngClass]="{'ms-2': !f}" target="_blank" rel="noopener noreferrer"><site-icon [site]="s.site" [iconClass]="'logo_size_small'"></site-icon><i class="bi bi-box-arrow-up-right text-black-50"></i></a>
+  </div>
+</div>

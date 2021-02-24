@@ -1,0 +1,14 @@
+<div class="input-group mb-3">
+  <input [(ngModel)]="inputField" type="search" class="form-control" placeholder="URL" aria-label="URL" aria-describedby="button-addon">
+  <button class="btn btn-primary" type="button" id="button-addon" (click)="toCheck()">Check</button>
+</div>
+<div class="border border-info rounded list-group linediv mb-3" (drop)="drop($event)" (dragover)="dragOver($event)">
+  <div *ngFor="let line of lines" class="list-group-item">{{line}}</div>
+</div>
+
+<div class="resultbox">
+  <ng-container *ngFor="let data of contents; index as i">
+    <pic-card *ngIf="data.kind == 'pic'" [profile]="data" (close)="remove(i)"></pic-card>
+    <account-card *ngIf="data.kind == 'author'" [profile]="data" (close)="remove(i)"></account-card>
+  </ng-container>
+</div>

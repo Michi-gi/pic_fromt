@@ -1,0 +1,26 @@
+<div class="card" [ngStyle]="{'width': mini ? '10rem' : '20rem'}">
+  <div *ngIf="!mini" class="card-header">
+    <a [href]="pageUrl" target="_blank" rel="noopener noreferrer">
+      <site-logo [site]="site" [logoClass]="'logo_size_small'"></site-logo>
+    </a>
+    <button type="button" class="btn-close" aria-label="Close" (click)="closeClicked()"></button>
+  </div>
+  <pic-carousel *ngIf="downloadUrls.length > 1" [id]="carouselId" [linkPath]="picPath" [picUrls]="downloadUrls" (picChange)="changePic($event)" (picsReady)="setImages($event)"></pic-carousel>
+  <a [routerLink]="['/picture', site, id]">
+    <img *ngIf="downloadUrls.length == 1" [src]="currentPicUrl" class="card-img-top">
+  </a>
+  <div class="card-body">
+    <p class="card-title" [ngClass]="{'h5': !mini, 'h6': mini}">{{title}}</p>
+    <p class="card-text"><text-link *ngIf="!mini" [text]="description"></text-link></p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li *ngIf="!mini" class="list-group-item">Author: 
+      <a [routerLink]="['/account', site, profile.author.id]">{{author}}</a>
+      <a [href]="authorPageUrl" class="ms-2" target="_blank" rel="noopener noreferrer"><site-icon [site]="site" [iconClass]="'logo_size_small'"></site-icon><i class="bi bi-box-arrow-up-right text-black-50"></i></a>
+    </li>
+    <li class="list-group-item">{{width}} x {{height}}</li>
+    <li class="list-group-item">
+      <span *ngFor="let tag of tags" class="badge rounded-pill bg-primary">{{tag.name}}</span>
+    </li>
+  </ul>
+</div>

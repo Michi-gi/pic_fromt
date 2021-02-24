@@ -1,0 +1,4 @@
+.resultbox {
+  display: flex;
+  flex-flow: wrap;
+}

@@ -1,0 +1,11 @@
+.linediv {
+  height: calc(18em + 0.75rem);
+  line-height: 1.5em;
+  resize: vertical;
+  overflow: auto;
+}
+
+.resultbox {
+  display: flex;
+  flex-flow: wrap;
+}

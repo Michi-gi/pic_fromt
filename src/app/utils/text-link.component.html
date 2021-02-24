@@ -1,0 +1,6 @@
+<ng-container *ngFor="let n of textLink">
+  <ng-container *ngIf="n.kind == 'text'">{{n.content}}</ng-container>
+  <ng-container *ngIf="n.kind == 'link'"><a [href]="n.ref" target="_blank" rel="noopener noreferrer">{{n.text}}</a></ng-container>
+  <ng-container *ngIf="n.kind == 'br'"><br/></ng-container>
+</ng-container>
+

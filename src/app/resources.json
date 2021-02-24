@@ -1,0 +1,20 @@
+{
+  "logo": {
+    "pixiv": "pixiv/logo.svg",
+    "twitter": "twitter/logo.svg",
+    "facebook": "facebook/logo.svg",
+    "instagram": "instagram/instagram-logo.svg",
+    "circlems": "circlems/header.png",
+    "pawoo": "pawoo/logo.png",
+    "tumblr": "tumblr/logo.png"
+  },
+  "symbol": {
+    "pixiv": "pixiv/icon.png",
+    "twitter": "twitter/logo.svg",
+    "facebook": "facebook/f_logo_RGB-Blue_1024.png",
+    "instagram": "instagram/instagram.svg",
+    "circlems": "circlems/logo.png",
+    "pawoo": "pawoo/pawoo.png",
+    "tumblr": "tumblr/icon.png"
+  } 
+}
