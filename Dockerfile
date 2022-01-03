@@ -23,4 +23,4 @@ RUN ng build --configuration production --output-path=./dist/build-by-docker
 FROM nginx:alpine as prod
 
 COPY --from=build /pic_front/dist/build-by-docker /usr/share/nginx/html
-#COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
+COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
