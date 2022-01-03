@@ -73,7 +73,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "pic-front:build"
+            "browserTarget": "pic-front:build",
+            "disableHostCheck": true
           },
           "configurations": {
             "production": {

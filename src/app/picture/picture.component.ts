@@ -49,7 +49,7 @@ export class PictureComponent implements OnInit, AfterViewInit {
 
       this.service.getPicProfile(this.site, this.id).subscribe(profile => {
         this.title = profile.title;
-        this.downloadUrls = profile.imageURLs.map(url => ("http://penguin.linux.test:8880/download?url=" + url));
+        this.downloadUrls = profile.imageURLs.map(url => ("/api/download?url=" + url));
         this.description = profile.description;
         this.created= new Date(profile.created);
         this.author = profile.author;

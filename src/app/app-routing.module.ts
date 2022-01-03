@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: 'picture/:site/:id', component: PictureComponent },
   { path: 'account/:site/:id', component: AccountComponent },
   { path: 'query', component: QueryComponent },
+  { path: '', redirectTo: 'query', pathMatch: 'full'},
 ];
 
 @NgModule({

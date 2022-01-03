@@ -61,7 +61,7 @@ export class PicCardComponent implements OnInit {
     if ((urls == null) || (urls.length == 0)) {
       return ["#"];
     }
-    return urls.map(url => "http://penguin.linux.test:8880/download?url=" + url);
+    return urls.map(url => "/api/download?url=" + url);
   }
 
   closeClicked() {

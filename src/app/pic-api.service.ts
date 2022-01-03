@@ -30,8 +30,8 @@ export class PicApiService {
     return this.http.get("/api/authorprofile?site=" + site + "&id=" + id, {observe:'body', responseType: 'json'}).pipe(map(result => ({ ...result, kind: "author"})));
   }
 
-  getPiscByAccount(site: string, id: string): Observable<any[]> {
-    return this.http.get<any[]>("/api/picbyauthor?site=" + site + "&id=" + id, {observe:'body', responseType: 'json'}).pipe(map(result => result.map(pic => ({ ...pic, kind: "author"}))));
+  getPiscByAccount(site: string, id: string, count: number): Observable<any> {
+    return this.http.get<any>("/api/picbyauthor?site=" + site + "&id=" + id + "&count=" + count, {observe:'body', responseType: 'json'}).pipe(map(result => ({ pictures: result.pictures.map(pic => ({ ...pic, kind: "pic"})), tags: result.tags }) ));
   }
 
 }

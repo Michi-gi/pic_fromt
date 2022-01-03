@@ -16,6 +16,13 @@
 <div>{{description}}</div>
 </div>
 
+<div>
+  <ng-container *ngFor="let tag of tags | slice:0:30; index as i">
+    <input type="radio" class="btn-check" name="tags" [id]="'tag' + i" autocomplete="off">
+    <label class="btn btn-outline-primary" [for]="'tag' + i">{{tag.tag.name}}</label>:{{tag.count}}
+  </ng-container>
+</div>
+
 <div class="resultbox">
   <pic-card *ngFor="let profile of viewPictures" [profile]="profile" [mini]="true"></pic-card>
 <div>

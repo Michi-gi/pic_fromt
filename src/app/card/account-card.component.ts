@@ -29,7 +29,7 @@ export class AccountCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.site = this.profile.site;
-    this.imageUrl = "http://penguin.linux.test:8880/download?url=" + this.profile.imageURL;
+    this.imageUrl = "/api/download?url=" + this.profile.imageURL;
     this.pageUrl = this.profile.pageURL;
     this.name = this.profile.name;
     this.account = this.profile.account;

@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { PicApiService } from '../pic-api.service';
+import { TagFilterService } from '../utils/tag-filter.service';
  
 import resources from '../resources.json';
 
@@ -34,14 +35,15 @@ export class AccountComponent implements OnInit, AfterViewInit {
   webPageUrl: string;
   externalSites: { site: string; id: string; URL: string; }[];
 
-  pictures: any[];
-  viewPictures: any[];
+  pictures: any[] = [];
+  viewPictures: any[] = [];
 
   observer: IntersectionObserver;
 
   constructor(
     private route: ActivatedRoute,
-    private service: PicApiService
+    private service: PicApiService,
+    private tagFilter: TagFilterService
   ) { }
 
   ngOnInit(): void {
@@ -51,17 +53,20 @@ export class AccountComponent implements OnInit, AfterViewInit {
 
       this.service.getAccountProfile(this.site, this.id).subscribe(profile => {
         this.name = profile.name;
-        this.imageUrl = "http://penguin.linux.test:8880/download?url=" + profile.imageURL;
-        this.backgroundUrl = (profile.backgroundURL) ? "http://penguin.linux.test:8880/download?url=" + profile.backgroundURL : null;
+        this.imageUrl = "/api/download?url=" + profile.imageURL;
+        this.backgroundUrl = (profile.backgroundURL) ? "/api/download?url=" + profile.backgroundURL : null;
         this.backgroundUrlP = profile.backgroundURL;
         this.description = profile.introduction;
         this.pageUrl = profile.pageURL;
         this.webPageUrl = profile.externalSites.find(exs => exs.site == "webpage")?.URL;
         this.externalSites = profile.externalSites.filter(exs =>exs.site != "webpage");
-      });
-      this.service.getPiscByAccount(this.site, this.id).subscribe(pics => {
-        this.pictures = pics;
-        this.viewPictures = pics.slice(0, VIEW_COUNT);
+
+        this.service.getPiscByAccount(this.site, this.id, profile.illustCount).subscribe(picsTags => {
+          this.pictures = picsTags.pictures;
+          this.viewPictures = picsTags.pictures.slice(0, VIEW_COUNT);
+          this.tags = picsTags.tags.sort((a, b) => b.count - a.count);
+          console.log(this.tags);
+        });
       });
     });
   }

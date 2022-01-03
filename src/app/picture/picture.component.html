@@ -7,7 +7,7 @@
     </div>
     <div class="text-center mb-3">
       <a [routerLink]="['/account', site, author.id]">
-      <img [src]="'http://penguin.linux.test:8880/download?url=' + author.imageURL" class="w-50"><p class="h5">{{author.name}}</p>
+      <img [src]="'/api/download?url=' + author.imageURL" class="w-50"><p class="h5">{{author.name}}</p>
       </a>
     </div>
     <div class="mb-3">
