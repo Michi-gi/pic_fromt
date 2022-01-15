@@ -50,3 +50,7 @@ proxy-config.json
 .DS_Store
 Thumbs.db
 nginx/
+
+# docker
+docker-compose.yml
+docker-compose.yaml
